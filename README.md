@@ -54,3 +54,6 @@ Tests cover input validation, local API payloads with a mocked model, app servin
 ## Submission checklist
 
 See DEV_SUBMISSION.md for a draft. Before publishing, identify the real person this serves, test with them, fill the marked sections, add your public source repository and a demo video or deployed link, and verify the challenge deadline and tags. Do not describe the scripted sample as AI output. Optional: record and share an agent session using DevRelay as described in the challenge.
+
+## Screenshots
+<img width="1896" height="871" alt="image" src="https://github.com/user-attachments/assets/4e92a926-1e5b-4f2f-9d00-85c57eb17fd3" />
