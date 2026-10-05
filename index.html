@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Kindred · A little practice, a little courage</title>
+    <style>
+      :root {
+        font-family: system-ui, sans-serif;
+        color: #193c38;
+        background: #f5f3eb;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      header {
+        padding: 24px 6%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #d9ded4;
+      }
+      .brand {
+        font-weight: 800;
+        font-size: 24px;
+      }
+      .badge {
+        font-size: 12px;
+        background: #e4eadf;
+        padding: 8px 12px;
+        border-radius: 30px;
+      }
+      main {
+        max-width: 1120px;
+        margin: 48px auto;
+        padding: 0 24px;
+        display: grid;
+        grid-template-columns: 340px 1fr;
+        gap: 42px;
+      }
+      .eyebrow {
+        font-size: 12px;
+        letter-spacing: 2px;
+        font-weight: 700;
+        color: #677d62;
+      }
+      h1 {
+        font-family: Georgia, serif;
+        font-size: 48px;
+        line-height: 1.08;
+        font-weight: 400;
+        margin: 18px 0;
+      }
+      p {
+        line-height: 1.7;
+        color: #556862;
+      }
+      label {
+        display: block;
+        margin: 20px 0 8px;
+        font-size: 14px;
+        font-weight: 650;
+      }
+      select,
+      textarea {
+        font: inherit;
+        border: 1px solid #c8d1c5;
+        border-radius: 12px;
+        background: #fffdf7;
+        width: 100%;
+        padding: 13px;
+        color: #193c38;
+      }
+      textarea {
+        resize: vertical;
+        min-height: 95px;
+      }
+      button {
+        font: inherit;
+        cursor: pointer;
+        border: 0;
+        border-radius: 10px;
+        background: #224f43;
+        color: white;
+        padding: 12px 18px;
+        font-weight: 650;
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: wait;
+      }
+      .secondary {
+        background: transparent;
+        color: #224f43;
+        border: 1px solid #bdcbbb;
+      }
+      .controls {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+      }
+      .note {
+        font-size: 12px;
+        margin-top: 24px;
+      }
+      .panel {
+        background: #fffdf8;
+        border: 1px solid #dbe0d5;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 16px 60px #2843320a;
+      }
+      .panel-head {
+        padding: 20px 24px;
+        border-bottom: 1px solid #e6e9df;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        background: #92a889;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 7px;
+      }
+      #chat {
+        padding: 24px;
+        height: 400px;
+        overflow: auto;
+      }
+      .empty {
+        text-align: center;
+        padding: 65px 18px;
+      }
+      .empty span {
+        font-size: 36px;
+      }
+      .empty h2 {
+        font-family: Georgia, serif;
+        font-weight: 400;
+      }
+      .bubble {
+        white-space: pre-wrap;
+        line-height: 1.65;
+        padding: 16px 18px;
+        border-radius: 16px;
+        margin-bottom: 16px;
+        background: #edf1e7;
+      }
+      .bubble.user {
+        background: #224f43;
+        color: white;
+        margin-left: 32px;
+      }
+      .speaker {
+        display: block;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 7px;
+        font-weight: 700;
+      }
+      form {
+        padding: 20px 24px;
+        border-top: 1px solid #e6e9df;
+      }
+      form label {
+        margin-top: 0;
+      }
+      .bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 12px;
+        gap: 12px;
+      }
+      #notice {
+        font-size: 13px;
+        color: #80502c;
+        line-height: 1.5;
+        margin: 12px 0;
+      }
+      footer {
+        text-align: center;
+        font-size: 12px;
+        color: #687b6b;
+        padding: 20px;
+      }
+      @media (max-width: 800px) {
+        main {
+          grid-template-columns: 1fr;
+          margin-top: 24px;
+          gap: 24px;
+        }
+        h1 {
+          font-size: 40px;
+        }
+        #chat {
+          height: 330px;
+        }
+        .badge {
+          max-width: 170px;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand">✳ kindred</div>
+      <span class="badge">Your words stay on your device</span>
+    </header>
+    <main>
+      <aside>
+        <div class="eyebrow">BUILT FOR A FRIEND</div>
+        <h1>A little practice.<br />A little courage.</h1>
+        <p>
+          A calm place to find your words before the real conversation. Take
+          your time. Try again. You belong here.
+        </p>
+        <label for="scenario">What are we practicing?</label
+        ><select id="scenario">
+          <option value="interview">A job interview</option>
+          <option value="everyday">Everyday English</option>
+          <option value="presentation">A presentation</option>
+        </select>
+        <div class="controls">
+          <button id="start">Start practicing ↗</button
+          ><button id="demo" class="secondary">Try sample</button>
+        </div>
+        <p id="status" role="status">Checking local model…</p>
+        <p class="note">
+          No accounts. No cloud API. Chats live only in this tab until you
+          download them. The sample uses scripted replies; live practice uses
+          your local AI model.
+        </p>
+        <div class="controls">
+          <button id="export" class="secondary">Download session</button
+          ><button id="clear" class="secondary">Clear session</button>
+        </div>
+      </aside>
+      <section class="panel">
+        <div class="panel-head">
+          <strong><span class="dot"></span>Your practice space</strong
+          ><small id="mode">Ready when you are</small>
+        </div>
+        <div id="chat" role="log" aria-live="polite">
+          <div class="empty">
+            <span>☀</span>
+            <h2>Small steps count.</h2>
+            <p>
+              Choose a scenario and start.<br />You don’t have to get it
+              perfect.
+            </p>
+          </div>
+        </div>
+        <form id="form">
+          <label for="answer">Your answer</label
+          ><textarea
+            id="answer"
+            maxlength="4000"
+            placeholder="Write what you would say…"
+            disabled
+          ></textarea>
+          <div id="notice" role="status"></div>
+          <div class="bottom">
+            <small id="count">One conversation at a time.</small
+            ><button id="send" disabled>Send answer ↗</button>
+          </div>
+        </form>
+      </section>
+    </main>
+    <footer>Made with patience · Powered by open weights, on your terms</footer>
+    <script>
+      const $ = (id) => document.getElementById(id);
+      let messages = [],
+        sample = false,
+        busy = false,
+        scenario = "interview";
+      const opening = {
+        interview:
+          "Tell me about yourself and the kind of role you’re looking for.",
+        everyday:
+          "You’ve just met a new neighbor. How would you introduce yourself?",
+        presentation:
+          "What is your presentation about, and why does it matter to your audience?",
+      };
+      function render() {
+        $("chat").replaceChildren();
+        for (const m of messages) {
+          const el = document.createElement("div");
+          el.className = "bubble " + m.role;
+          const label = document.createElement("span");
+          label.className = "speaker";
+          label.textContent = m.role === "user" ? "You" : "Kindred";
+          el.append(label, document.createTextNode(m.content));
+          $("chat").append(el);
+        }
+        $("chat").scrollTop = $("chat").scrollHeight;
+        $("count").textContent =
+          `${Math.floor(messages.length / 2)} exchanges · session stays in this tab`;
+      }
+      function lock(value) {
+        busy = value;
+        for (const id of ["start", "demo", "clear", "scenario"])
+          $(id).disabled = value;
+        $("send").disabled = value || !messages.length || messages.length >= 24;
+        $("answer").disabled = $("send").disabled;
+      }
+      async function request(content) {
+        lock(true);
+        $("notice").textContent = "Kindred is thinking…";
+        const pending = [...messages, { role: "user", content }];
+        try {
+          let reply;
+          if (sample) {
+            reply =
+              messages.length === 0
+                ? opening[scenario]
+                : "Thanks for giving that a try.\n\nA useful structure is: what you did, how you did it, and what changed. Try adding one concrete example.\n\nWhat is one experience you would like to explain more clearly?\n\n[Scripted sample: this feedback is not based on your answer.]";
+          } else {
+            const r = await fetch("/api/chat", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ scenario, messages: pending }),
+            });
+            const data = await r.json();
+            if (!r.ok) throw Error(data.error);
+            reply = data.reply;
+          }
+          messages = [...pending, { role: "assistant", content: reply }];
+          render();
+          $("answer").value = "";
+          $("notice").textContent = "";
+        } catch (e) {
+          $("notice").textContent = e.message;
+        } finally {
+          lock(false);
+        }
+      }
+      async function start(demo) {
+        messages = [];
+        scenario = $("scenario").value;
+        sample = demo;
+        $("mode").textContent = sample
+          ? "Scripted sample"
+          : "Local AI practice";
+        render();
+        await request("Please start our practice session.");
+      }
+      $("start").onclick = () => start(false);
+      $("demo").onclick = () => start(true);
+      $("form").onsubmit = (e) => {
+        e.preventDefault();
+        const text = $("answer").value.trim();
+        if (text && !busy) request(text);
+      };
+      $("clear").onclick = () => {
+        messages = [];
+        render();
+        $("mode").textContent = "Session cleared";
+        $("notice").textContent = "";
+        lock(false);
+      };
+      $("export").onclick = () => {
+        const text =
+          `Kindred practice — ${scenario}\nMode: ${sample ? "scripted sample" : "local AI"}\n\n` +
+          messages
+            .map(
+              (m) => `${m.role === "user" ? "You" : "Kindred"}: ${m.content}`,
+            )
+            .join("\n\n");
+        const url = URL.createObjectURL(
+          new Blob([text], { type: "text/plain" }),
+        );
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "kindred-session.txt";
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      };
+      fetch("/api/status")
+        .then((r) => r.json())
+        .then((d) => {
+          $("status").textContent = d.ready
+            ? `Local model ready · ${d.model}`
+            : `Live practice needs Ollama + ${d.model}. Try the sample first.`;
+        })
+        .catch(() => {
+          $("status").textContent = "Server unavailable. Restart the app.";
+        });
+    </script>
+  </body>
+</html>
